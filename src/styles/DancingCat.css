@@ -1,0 +1,561 @@
+/* Container */
+.dancing-cat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+/* Cat Image Wrapper */
+.dancing-cat {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  perspective: 1000px;
+}
+
+.cat-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+  transform-origin: center center;
+}
+
+/* Dancing Animation */
+.dancing-cat.dancing .cat-image {
+  animation:
+    catDance 2s ease-in-out infinite,
+    catSway 3s ease-in-out infinite,
+    catBounce 1.5s ease-in-out infinite,
+    catRotate 4s ease-in-out infinite;
+}
+
+/* Keyframe Animations */
+@keyframes catDance {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+  }
+  25% {
+    transform: translateY(-20px) scale(1.1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+  75% {
+    transform: translateY(-30px) scale(1.15);
+  }
+}
+
+@keyframes catSway {
+  0%, 100% {
+    transform: translateX(0px) rotateZ(0deg);
+  }
+  33% {
+    transform: translateX(15px) rotateZ(5deg);
+  }
+  66% {
+    transform: translateX(-15px) rotateZ(-5deg);
+  }
+}
+
+@keyframes catBounce {
+  0%, 100% {
+    transform: scaleY(1) scaleX(1);
+  }
+  50% {
+    transform: scaleY(0.9) scaleX(1.1);
+  }
+}
+
+@keyframes catRotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
+    transform: rotateY(10deg);
+  }
+  50% {
+    transform: rotateY(0deg);
+  }
+  75% {
+    transform: rotateY(-10deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Stopped state */
+.dancing-cat.stopped .cat-image {
+  animation: none;
+  transition: transform 0.5s ease-out;
+  transform: scale(1) rotateZ(0deg) rotateY(0deg);
+}
+
+/* Animation Controls */
+.animation-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.primary-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.control-button {
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 160px;
+}
+
+.control-button.primary {
+  background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+  box-shadow: 0 8px 25px rgba(255,107,107,0.3);
+}
+
+.control-button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255,107,107,0.4);
+  background: linear-gradient(45deg, #ff5252, #ff7043);
+}
+
+.control-button.secondary {
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  box-shadow: 0 8px 25px rgba(78,205,196,0.3);
+}
+
+.control-button.secondary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(78,205,196,0.4);
+  background: linear-gradient(45deg, #26a69a, #00897b);
+}
+
+.control-button:active {
+  transform: translateY(-1px);
+}
+
+.control-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+}
+
+/* Speed Control */
+.speed-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+.speed-label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+}
+
+.speed-value {
+  color: #4ecdc4;
+  font-weight: bold;
+}
+
+.speed-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: rgba(255,255,255,0.2);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.speed-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(78,205,196,0.4);
+  transition: all 0.2s ease;
+}
+
+.speed-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(78,205,196,0.6);
+}
+
+.speed-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 4px 15px rgba(78,205,196,0.4);
+}
+
+.speed-markers {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.7);
+}
+
+/* Keyboard Hints */
+.keyboard-hints {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  width: 100%;
+  max-width: 400px;
+}
+
+.keyboard-hints p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+}
+
+.hints-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.hints-grid span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.9);
+}
+
+kbd {
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Animation Status */
+.animation-status {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.status-active {
+  color: #4ecdc4;
+  text-shadow: 0 0 10px rgba(78,205,196,0.5);
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+.status-paused {
+  color: #ffa726;
+  text-shadow: 0 0 10px rgba(255,167,38,0.5);
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Performance optimizations */
+.dancing-cat.dancing .cat-image {
+  will-change: transform;
+}
+
+.dancing-cat.stopped .cat-image {
+  will-change: auto;
+}
+
+/* Hover effects for the cat */
+.dancing-cat:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.dancing-cat:hover .cat-image {
+  filter: drop-shadow(0 8px 25px rgba(0,0,0,0.3));
+}
+
+/* Background pulse effect when dancing */
+.dancing-cat.dancing::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+  animation: backgroundPulse 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes backgroundPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Design */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  .dancing-cat-container {
+    gap: 2rem;
+    padding: 1.5rem;
+  }
+
+  .dancing-cat {
+    width: 200px;
+    height: 200px;
+  }
+
+  .control-button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .animation-status {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .app-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .app-header p {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+  .dancing-cat-container {
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  .dancing-cat {
+    width: 150px;
+    height: 150px;
+  }
+
+  .control-button {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+  }
+
+  .animation-status {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .app-header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .app-header p {
+    font-size: 0.9rem;
+  }
+
+  /* Adjust animations for smaller screens */
+  @keyframes catDance {
+    0%, 100% {
+      transform: translateY(0px) scale(1);
+    }
+    25% {
+      transform: translateY(-15px) scale(1.05);
+    }
+    50% {
+      transform: translateY(-8px) scale(1.03);
+    }
+    75% {
+      transform: translateY(-20px) scale(1.08);
+    }
+  }
+
+  @keyframes catSway {
+    0%, 100% {
+      transform: translateX(0px) rotateZ(0deg);
+    }
+    33% {
+      transform: translateX(10px) rotateZ(3deg);
+    }
+    66% {
+      transform: translateX(-10px) rotateZ(-3deg);
+    }
+  }
+}
+
+/* Small Mobile (320px and below) */
+@media (max-width: 320px) {
+  .dancing-cat-container {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .dancing-cat {
+    width: 120px;
+    height: 120px;
+  }
+
+  .control-button {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+    letter-spacing: 0.5px;
+  }
+
+  .animation-status {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .app-header p {
+    font-size: 0.8rem;
+  }
+}
+
+/* Large Desktop (1200px and above) */
+@media (min-width: 1200px) {
+  .dancing-cat-container {
+    gap: 4rem;
+    padding: 3rem;
+  }
+
+  .dancing-cat {
+    width: 300px;
+    height: 300px;
+  }
+
+  .control-button {
+    font-size: 1.3rem;
+    padding: 1.2rem 2.5rem;
+  }
+
+  .animation-status {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+
+  .app-header h1 {
+    font-size: 4rem;
+  }
+
+  .app-header p {
+    font-size: 1.4rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .control-button:hover {
+    transform: none;
+    box-shadow: 0 8px 25px rgba(255,107,107,0.3);
+  }
+
+  .dancing-cat:hover {
+    transform: none;
+  }
+
+  .dancing-cat:hover .cat-image {
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cat-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .dancing-cat-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .animation-controls {
+    gap: 1rem;
+  }
+
+  .app-header {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .app-header p {
+    font-size: 0.9rem;
+  }
+}

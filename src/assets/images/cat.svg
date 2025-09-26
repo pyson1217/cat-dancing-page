@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Cat body -->
+  <ellipse cx="100" cy="120" rx="45" ry="35" fill="#ff8c42" stroke="#333" stroke-width="2"/>
+
+  <!-- Cat head -->
+  <circle cx="100" cy="70" r="35" fill="#ff8c42" stroke="#333" stroke-width="2"/>
+
+  <!-- Cat ears -->
+  <polygon points="75,45 85,20 95,45" fill="#ff8c42" stroke="#333" stroke-width="2"/>
+  <polygon points="105,45 115,20 125,45" fill="#ff8c42" stroke="#333" stroke-width="2"/>
+
+  <!-- Inner ears -->
+  <polygon points="80,40 85,28 90,40" fill="#ffb570"/>
+  <polygon points="110,40 115,28 120,40" fill="#ffb570"/>
+
+  <!-- Cat eyes -->
+  <ellipse cx="90" cy="65" rx="6" ry="8" fill="#333"/>
+  <ellipse cx="110" cy="65" rx="6" ry="8" fill="#333"/>
+  <ellipse cx="92" cy="63" rx="2" ry="3" fill="#fff"/>
+  <ellipse cx="112" cy="63" rx="2" ry="3" fill="#fff"/>
+
+  <!-- Cat nose -->
+  <polygon points="100,75 95,80 105,80" fill="#ff69b4"/>
+
+  <!-- Cat mouth -->
+  <path d="M 100 82 Q 95 85 92 82" stroke="#333" stroke-width="1.5" fill="none"/>
+  <path d="M 100 82 Q 105 85 108 82" stroke="#333" stroke-width="1.5" fill="none"/>
+
+  <!-- Cat whiskers -->
+  <line x1="70" y1="68" x2="85" y2="70" stroke="#333" stroke-width="1.5"/>
+  <line x1="70" y1="75" x2="85" y2="75" stroke="#333" stroke-width="1.5"/>
+  <line x1="115" y1="70" x2="130" y2="68" stroke="#333" stroke-width="1.5"/>
+  <line x1="115" y1="75" x2="130" y2="75" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Cat legs -->
+  <ellipse cx="80" cy="150" rx="8" ry="15" fill="#ff8c42" stroke="#333" stroke-width="2"/>
+  <ellipse cx="120" cy="150" rx="8" ry="15" fill="#ff8c42" stroke="#333" stroke-width="2"/>
+
+  <!-- Cat paws -->
+  <ellipse cx="80" cy="165" rx="10" ry="6" fill="#333"/>
+  <ellipse cx="120" cy="165" rx="10" ry="6" fill="#333"/>
+
+  <!-- Cat tail -->
+  <path d="M 145 120 Q 170 100 180 130 Q 175 150 160 140" stroke="#ff8c42" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M 145 120 Q 170 100 180 130 Q 175 150 160 140" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Cat belly pattern -->
+  <ellipse cx="100" cy="125" rx="25" ry="20" fill="#ffb570" opacity="0.7"/>
+</svg>
